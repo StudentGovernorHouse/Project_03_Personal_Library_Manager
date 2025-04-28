@@ -186,7 +186,7 @@ def get_library_stats():
 
     for book in st.session_state.library:
         if book['genre'] in generes:
-            genre[book{'genre'}] += 1
+            genre[book['genre']] += 1
         else:
             generes[book['genre']] = 1
 
