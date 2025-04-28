@@ -15,7 +15,7 @@ st.set_page_config(
     page_title="Personal Library Management System",
     page_icon="📚",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
 )
 #custom cs for styling
 st.markdown("""
@@ -30,7 +30,7 @@ st.markdown("""
         }
             
         .sub_header{
-            font_size: 1.8rem | important;
+            font_size: 1.8rem !important;
             color:3B82f6;
             font-weight:600;
             margin-top:1rem;
@@ -118,7 +118,7 @@ def load_library():
     try:
         if os.path.exists ("library-json"):
             with open("library.json", 'r') as file:
-                st.session_state.library = json.lead(file)
+                st.session_state.library = json.load(file)
                 return True
             return False
     except Exception as e:
@@ -129,7 +129,7 @@ def load_library():
     def save_library():
         try:
             with open("library.json", "w") as file:
-                json.dump(st.session_state.library.file)
+                json.dump(st.session_state.library, file)
                 return True
         except Exception as e:
             st.error(f"Error loading library: {e}")
@@ -158,8 +158,6 @@ def remove_book(index):
         save_library()
         st.session_state.book_removed = True
         return True
-        return False
-
 #search books
 def search_book(search_term, search_by):
     search_term = search_term.lower()
@@ -180,7 +178,7 @@ def get_library_stats():
     read_books =sum(1 for book in st.session_state.library if book['read status'])
     percent_read = (read_books / total_books * 100) if total_books > 0 else 0
 
-    generes = {}
+    genres = {}
     authors = {}
     decades = {}
 
@@ -275,7 +273,7 @@ def create_visulations(stats):
     #load library
 load_library()
 st.sidebar.markdown("<h1 style=''text-align: center;'> Navigation</h1", unsafe_allow_html=True)
-lottie_book = loafd_lottieurl("https://assests9.lottieflies.com/temp/1f20_aKAfIn.json")
+lottie_book = load_lottieurl("https://assests9.lottiefiles.com/temp/1f20_aKAfIn.json")
 if lottie_book:
     with st.sidebar:
         st_lottie(lottie_book, height=200, key='book_animation')
@@ -299,15 +297,12 @@ if lottie_book:
 
         #adding books input form
             with st.form (key='add_book_form'):
-                col1, col2 
-                st.columns (2)
-
+                col1, col2 st.columns (2)
                 with col1:
                     title = st.text_input("Book Title", max_chars=100)
                     author + st.text_input("Author",  max_chars=100)
                     publication_year = st.number_input("publication year", min_value=1000, max_values=datetime.now().year, step=1, value=2023)
-
-
+                    
                     with col2:
                         genre =st.selectgbox("Genre", [
                     ])
@@ -334,7 +329,7 @@ if lottie_book:
                                 st.markdown(f"""<div class = 'book-card>
                                         <h3>{book['title']}</h3>
                                         <p><strong>Author:</strong> {book['author']}</p>
-                                        <p><strong>Publication Year:</strong> {book['author']}</p>
+                                        <p><strong>Publication Year:</strong> {book['Publication']}</p>
                                         <p><strong>Genrerong> {book['genre']}</p>
                                         <p>,<span class='{"read-badge" if book["read_status"] else "Unread-badge"}'>{
                                             "Read" if book["read_status"] else "Unread"
@@ -345,14 +340,14 @@ if lottie_book:
                                 with col1:
                                     if st.button(f"Remove", key=f"remove_{i}", use_container_width=True):
                                       if remove_book(i):
-                                        st.retrun()
+                                        st.rerun()
                                         with col2:
                                             new_status = not book['read_status']
                                             status_label = "Mark as read" if not book['read_status'] else "Mark as Unread"
                                             if st.button(status_label, key=f"status_{i}", use_container_width=True):
                                                 st.session_state.library[i]['read_status'] = new_status
                                                 save_library()
-                                                st.retrun()
+                                                st.return()
                 if  st.session_state.book_removed:
                     st.markdown("div class='sucess-message'> Book removes sucessfully!</div>", unsafe_allow_html=True)
                     st.session_state.book_removed = False
@@ -376,7 +371,7 @@ if lottie_book:
                                     <div class = 'book-card>
                                     <h3>{book['title']}</h3>
                                     <p><strong>Author:</strong> {book['author']}</p>
-                                    <p><strong>Publication Year:</strong> {book['author']}</p>
+                                    <p><strong>Publication Year:</strong> {book['publication']}</p>
                                     <p><strong>Genrerong> {book['genre']}</p>
                                     <p>,<span class='{"read-badge" if book["read_status"] else "Unread-badge"}'>{
                                         "Read" if book["read_status"] else "Unread"
