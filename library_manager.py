@@ -251,10 +251,10 @@ def create_visulations(stats):
                 height=400
     )
             st.plotly_chart(fig_genres, use_container_width=True)
-        if stats['decades']:
-    decades_df = pd.DataFrame({
-        'Decade': [f"{decade}s" for decade in stats['decades'].keys()],
-        'count': list(stats['decades'].values())
+            if stats['decades']:
+                decades_df = pd.DataFrame({
+                    'Decade': [f"{decade}s" for decade in stats['decades'].keys()],
+                    'count': list(stats['decades'].values())
     })
 
         fig_decades = px.line(
