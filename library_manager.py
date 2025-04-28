@@ -259,7 +259,7 @@ def create_visulations(stats):
         fig_decades = px.line(
             decades_df,
             x='Decade',
-            y='Count'
+            y='Count',
             markers=True,
             line_sape="spline"
     )
