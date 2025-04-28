@@ -339,9 +339,9 @@ if lottie_book:
                                 col1, col2 = st.columns(2)
                                 with col1:
                                     if st.button(f"Remove", key=f"remove_{i}", use_container_width=True):
-                                      if remove_book(i):
-                                        st.rerun()
-                                        with col2:
+                                        if remove_book(i):
+                                            st.rerun()
+                                            with col2:
                                             new_status = not book['read_status']
                                             status_label = "Mark as read" if not book['read_status'] else "Mark as Unread"
                                             if st.button(status_label, key=f"status_{i}", use_container_width=True):
