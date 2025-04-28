@@ -305,7 +305,7 @@ if lottie_book:
                 with col1:
                     title = st.text_input("Book Title", max_chars=100)
                     author + st.text_input("Author",  max_chars=100)
-                    publication_year = st.number_input("publication year", min_value=1000 max_values=datetime.now().year, step=1 value=2023)
+                    publication_year = st.number_input("publication year", min_value=1000, max_values=datetime.now().year, step=1 value=2023)
 
 
                     with col2:
