@@ -12,7 +12,7 @@ import requests
 
 #set page congifuration
 st.set_page_config(
-    page_title="Personal Library Management System"
+    page_title="Personal Library Management System",
     page_icon="📚",
     layout="wide",
     initial_sidebar_state="expanded"
