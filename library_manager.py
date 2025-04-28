@@ -317,8 +317,9 @@ if lottie_book:
                         st.markdown("<div class='sucess-message'> Book added sucessfully!</div>", unsafe_allow_html=True)
                         st.balloons()
                         st.session_state.book_added = (False)
-                    else: st.session_state.current_view =="library"
-                          st.markdown("<h2 class ='sub-header'> Your Library </h2>", unsafe_allow_html=True)          
+                    else:
+                        st.session_state.current_view =="library"
+                        st.markdown("<h2 class ='sub-header'> Your Library </h2>", unsafe_allow_html=True)          
                 
                     if not st.session_state.library:
                            st.markdown("div class='warning-message'> Your Library is empty. Add some books to get started</div>", unsafe_allow_html=True)
