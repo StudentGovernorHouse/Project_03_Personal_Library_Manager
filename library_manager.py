@@ -297,7 +297,7 @@ if lottie_book:
 
         #adding books input form
             with st.form (key='add_book_form'):
-                col1, col2 st.columns (2)
+                col1, col2 = st.columns (2)
                 with col1:
                     title = st.text_input("Book Title", max_chars=100)
                     author + st.text_input("Author",  max_chars=100)
