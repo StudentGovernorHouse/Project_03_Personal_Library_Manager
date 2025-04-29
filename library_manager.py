@@ -374,7 +374,7 @@ if hasattr(st.session_state, 'search_result'):
         st.markdown("<div class+ 'warning-message'> No Books Found Matching Your Search", unsafe_allow_html=True)
         if not st.session_state.library:
             st.markdown("<div class='warning_message'> Your Library Is Empty. Add Some Books TO See Stats!</div>", unsafe_allow_html=True)
-        elif stats = get_library_stats():
+        elif get_library_stats():
                 col1,col2, col3 = st.columns(3)
         with col1:
             st.metric("Book Read", stats['read_books'])
