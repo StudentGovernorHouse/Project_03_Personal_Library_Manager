@@ -318,15 +318,15 @@ if lottie_book:
             else:cols = st.columns(2)
             for i , book in enumerate(st.session_state.library):
                 with cols[i % 2 ]:
-                st.markdown(f"""<div class = 'book-card>
-                <h3>{book['title']}</h3>
-                <p><strong>Author:</strong> {book['author']}</p>
-                <p><strong>Publication Year:</strong> {book['Publication']}</p>
-                <p><strong>Genrerong> {book['genre']}</p>
-                <p>,<span class='{"read-badge" if book["read_status"] else "Unread-badge"}'>{
-                    "Read" if book["read_status"] else "Unread"
-                }</span></p>
-                </div>
+                    st.markdown(f"""<div class = 'book-card>
+                    <h3>{book['title']}</h3>
+                    <p><strong>Author:</strong> {book['author']}</p>
+                    <p><strong>Publication Year:</strong> {book['Publication']}</p>
+                    <p><strong>Genrerong> {book['genre']}</p>
+                    <p>,<span class='{"read-badge" if book["read_status"] else "Unread-badge"}'>{
+                        "Read" if book["read_status"] else "Unread"
+                    }</span></p>
+                    </div>
                 """, unsafe_allow_html=True)
                 col1, col2 = st.columns(2)
                 with col1:
