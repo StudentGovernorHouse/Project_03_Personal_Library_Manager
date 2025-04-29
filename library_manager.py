@@ -316,7 +316,7 @@ if lottie_book:
             if not st.session_state.library:
                    st.markdown("div class='warning-message'> Your Library is empty. Add some books to get started</div>", unsafe_allow_html=True)
             else:cols = st.columns(2)
-                for i , book in enumerate(st.session_state.library):
+            for i , book in enumerate(st.session_state.library):
             with cols[i % 2 ]:
                 st.markdown(f"""<div class = 'book-card>
                 <h3>{book['title']}</h3>
