@@ -338,8 +338,8 @@ if lottie_book:
                     status_label = "Mark as read" if not book['read_status'] else "Mark as Unread"
                     if st.button(status_label, key=f"status_{i}", use_container_width=True):
                         st.session_state.library[i]['read_status'] = new_status
-                        save_library()
-                        st.return()
+                    save_library()
+                    st.return()
                     if st.session_state.book_removed:
                         st.markdown("div class='sucess-message'> Book removes sucessfully!</div>", unsafe_allow_html=True)
                         st.session_state.book_removed = False
